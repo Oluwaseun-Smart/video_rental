@@ -56,21 +56,21 @@ public class PriceServiceTest {
                 .rate(10.00)
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
-                .videoType(VideoType.Regular).build();
+                .videoType(VideoType.Regular.getType()).build();
         prices.add(regularPrice);
 
         final Price newReleasePrice = Price.builder()
                 .rate(15.00)
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
-                .videoType(VideoType.New_Release).build();
+                .videoType(VideoType.New_Release.getType()).build();
         prices.add(newReleasePrice);
 
         final Price childrenMoviesPrice = Price.builder()
                 .rate(8.00)
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
-                .videoType(VideoType.Children_Movie).build();
+                .videoType(VideoType.Children_Movie.getType()).build();
         prices.add(childrenMoviesPrice);
 
         pricePage = new PageImpl<>(prices);
@@ -103,7 +103,7 @@ public class PriceServiceTest {
                 .rate(10.00)
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
-                .videoType(VideoType.Regular).build();
+                .videoType(VideoType.Regular.getType()).build();
 
         when(priceRepository.save(price)).thenReturn(price);
 
@@ -115,7 +115,7 @@ public class PriceServiceTest {
         assertEquals("Price saved successfully", testPriceResponse.getMessage());
 
         assertEquals(10.00, newPrice.getRate());
-        assertEquals(VideoType.Regular, newPrice.getVideoType());
+        assertEquals(VideoType.Regular.getType(), newPrice.getVideoType());
     }
 
     @Test
@@ -125,7 +125,7 @@ public class PriceServiceTest {
                 .id(1L)
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
-                .videoType(VideoType.Regular).build();
+                .videoType(VideoType.Regular.getType()).build();
 
         final Optional<Price> optionalPrice = Optional.of(price);
 
@@ -139,7 +139,7 @@ public class PriceServiceTest {
         assertEquals("Price retrieved successfully", testPriceResponse.getMessage());
 
         assertEquals(10.00, priceData.getRate());
-        assertEquals(VideoType.Regular, priceData.getVideoType());
+        assertEquals(VideoType.Regular.getType(), priceData.getVideoType());
     }
 
     @Test
@@ -148,7 +148,7 @@ public class PriceServiceTest {
                 .rate(8.00)
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
-                .videoType(VideoType.Children_Movie).build();
+                .videoType(VideoType.Children_Movie.getType()).build();
 
         final User oluwaseunSmart = User.builder()
                 .id(1L)
@@ -160,14 +160,14 @@ public class PriceServiceTest {
         final Video video = Video.builder()
                 .id(1L)
                 .title("Tom & Jerry")
-                .videoType(VideoType.Children_Movie)
-                .videoGenre(VideoGenre.Comedy)
+                .videoType(VideoType.Children_Movie.getType())
+                .videoGenre(VideoGenre.Comedy.getGenre())
                 .maximumAge(15)
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
                 .build();
 
-        when(priceRepository.findByVideoType(VideoType.Children_Movie)).thenReturn(Optional.of(price));
+        when(priceRepository.findByVideoType(VideoType.Children_Movie.getType())).thenReturn(Optional.of(price));
         when(userRepository.findById(1L)).thenReturn(Optional.of(oluwaseunSmart));
         when(videoRepository.findById(1L)).thenReturn(Optional.of(video));
 

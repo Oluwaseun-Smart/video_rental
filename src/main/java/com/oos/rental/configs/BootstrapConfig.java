@@ -13,7 +13,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -39,21 +38,21 @@ public class BootstrapConfig implements CommandLineRunner {
                 .rate(10.00)
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
-                .videoType(VideoType.Regular).build();
+                .videoType(VideoType.Regular.getType()).build();
         prices.add(regularPrice);
 
         final Price newReleasePrice = Price.builder()
                 .rate(15.00)
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
-                .videoType(VideoType.New_Release).build();
+                .videoType(VideoType.New_Release.getType()).build();
         prices.add(newReleasePrice);
 
         final Price childrenMoviesPrice = Price.builder()
                 .rate(8.00)
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
-                .videoType(VideoType.Children_Movie).build();
+                .videoType(VideoType.Children_Movie.getType()).build();
         prices.add(childrenMoviesPrice);
 
         if (!prices.isEmpty()) {
@@ -62,8 +61,8 @@ public class BootstrapConfig implements CommandLineRunner {
 
         final Video regularVideo = Video.builder()
                 .title("Godzilla vs. Kong")
-                .videoType(VideoType.Regular)
-                .videoGenre(VideoGenre.Action)
+                .videoType(VideoType.Regular.getType())
+                .videoGenre(VideoGenre.Action.getGenre())
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
                 .build();
@@ -71,8 +70,8 @@ public class BootstrapConfig implements CommandLineRunner {
 
         final Video secondRegularVideo = Video.builder()
                 .title("Wrath of Man")
-                .videoType(VideoType.Regular)
-                .videoGenre(VideoGenre.Drama)
+                .videoType(VideoType.Regular.getType())
+                .videoGenre(VideoGenre.Drama.getGenre())
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
                 .build();
@@ -80,8 +79,8 @@ public class BootstrapConfig implements CommandLineRunner {
 
         final Video thirdRegularVideo = Video.builder()
                 .title("Cruella")
-                .videoType(VideoType.Regular)
-                .videoGenre(VideoGenre.Romance)
+                .videoType(VideoType.Regular.getType())
+                .videoGenre(VideoGenre.Romance.getGenre())
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
                 .build();
@@ -89,8 +88,8 @@ public class BootstrapConfig implements CommandLineRunner {
 
         final Video childrenVideo = Video.builder()
                 .title("Tom & Jerry")
-                .videoType(VideoType.Children_Movie)
-                .videoGenre(VideoGenre.Comedy)
+                .videoType(VideoType.Children_Movie.getType())
+                .videoGenre(VideoGenre.Comedy.getGenre())
                 .maximumAge(15)
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
@@ -99,8 +98,8 @@ public class BootstrapConfig implements CommandLineRunner {
 
         final Video newVideo = Video.builder()
                 .title("Army of the Dead")
-                .videoType(VideoType.New_Release)
-                .videoGenre(VideoGenre.Horror)
+                .videoType(VideoType.New_Release.getType())
+                .videoGenre(VideoGenre.Horror.getGenre())
                 .year("2021")
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
@@ -109,8 +108,8 @@ public class BootstrapConfig implements CommandLineRunner {
 
         final Video secondNewVideo = Video.builder()
                 .title("Mortal Kombat")
-                .videoType(VideoType.New_Release)
-                .videoGenre(VideoGenre.Action)
+                .videoType(VideoType.New_Release.getType())
+                .videoGenre(VideoGenre.Action.getGenre())
                 .year("2020")
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())

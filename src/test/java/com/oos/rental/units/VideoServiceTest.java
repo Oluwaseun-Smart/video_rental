@@ -43,8 +43,8 @@ public class VideoServiceTest {
 
         final Video regularVideo = Video.builder()
                 .title("Godzilla vs. Kong")
-                .videoType(VideoType.Regular)
-                .videoGenre(VideoGenre.Action)
+                .videoType(VideoType.Regular.getType())
+                .videoGenre(VideoGenre.Action.getGenre())
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
                 .build();
@@ -52,8 +52,8 @@ public class VideoServiceTest {
 
         final Video secondRegularVideo = Video.builder()
                 .title("Wrath of Man")
-                .videoType(VideoType.Regular)
-                .videoGenre(VideoGenre.Drama)
+                .videoType(VideoType.Regular.getType())
+                .videoGenre(VideoGenre.Drama.getGenre())
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
                 .build();
@@ -61,8 +61,8 @@ public class VideoServiceTest {
 
         final Video thirdRegularVideo = Video.builder()
                 .title("Cruella")
-                .videoType(VideoType.Regular)
-                .videoGenre(VideoGenre.Romance)
+                .videoType(VideoType.Regular.getType())
+                .videoGenre(VideoGenre.Romance.getGenre())
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
                 .build();
@@ -70,8 +70,8 @@ public class VideoServiceTest {
 
         final Video childrenVideo = Video.builder()
                 .title("Tom & Jerry")
-                .videoType(VideoType.Children_Movie)
-                .videoGenre(VideoGenre.Comedy)
+                .videoType(VideoType.Children_Movie.getType())
+                .videoGenre(VideoGenre.Comedy.getGenre())
                 .maximumAge(15)
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
@@ -80,8 +80,8 @@ public class VideoServiceTest {
 
         final Video newVideo = Video.builder()
                 .title("Army of the Dead")
-                .videoType(VideoType.New_Release)
-                .videoGenre(VideoGenre.Horror)
+                .videoType(VideoType.New_Release.getType())
+                .videoGenre(VideoGenre.Horror.getGenre())
                 .year("2021")
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
@@ -90,8 +90,8 @@ public class VideoServiceTest {
 
         final Video secondNewVideo = Video.builder()
                 .title("Mortal Kombat")
-                .videoType(VideoType.New_Release)
-                .videoGenre(VideoGenre.Action)
+                .videoType(VideoType.New_Release.getType())
+                .videoGenre(VideoGenre.Action.getGenre())
                 .year("2020")
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
@@ -127,8 +127,8 @@ public class VideoServiceTest {
     void testCreateVideo() {
         final Video video = Video.builder()
                 .title("Army of the Dead")
-                .videoType(VideoType.New_Release)
-                .videoGenre(VideoGenre.Horror)
+                .videoType(VideoType.New_Release.getType())
+                .videoGenre(VideoGenre.Horror.getGenre())
                 .year("2021")
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
@@ -144,8 +144,8 @@ public class VideoServiceTest {
         assertEquals("Video saved successfully", videoResponse.getMessage());
 
         assertEquals("Army of the Dead", newVideo.getTitle());
-        assertEquals(VideoType.New_Release, newVideo.getVideoType());
-        assertEquals(VideoGenre.Horror, newVideo.getVideoGenre());
+        assertEquals(VideoType.New_Release.getType(), newVideo.getVideoType());
+        assertEquals(VideoGenre.Horror.getGenre(), newVideo.getVideoGenre());
         assertEquals("2021", newVideo.getYear());
     }
 
@@ -153,8 +153,8 @@ public class VideoServiceTest {
     void testGetVideoById() {
         final Video video = Video.builder()
                 .title("Army of the Dead")
-                .videoType(VideoType.New_Release)
-                .videoGenre(VideoGenre.Horror)
+                .videoType(VideoType.New_Release.getType())
+                .videoGenre(VideoGenre.Horror.getGenre())
                 .year("2021")
                 .createdAt(LocalDate.now())
                 .updateAt(LocalDate.now())
@@ -172,8 +172,8 @@ public class VideoServiceTest {
         assertEquals("Video retrieved successfully", testVideo.getMessage());
 
         assertEquals("Army of the Dead", videoData.getTitle());
-        assertEquals(VideoGenre.Horror, videoData.getVideoGenre());
-        assertEquals(VideoType.New_Release, videoData.getVideoType());
+        assertEquals(VideoGenre.Horror.getGenre(), videoData.getVideoGenre());
+        assertEquals(VideoType.New_Release.getType(), videoData.getVideoType());
         assertEquals("2021", videoData.getYear());
     }
 }

@@ -40,7 +40,7 @@ public class PriceService {
             return new Response.Builder<>()
                     .setStatus(false)
                     .setCode(Response.Code.NOT_ALLOWED)
-                    .setMessage(String.format("Price has been created for %", price.getVideoType().getType()))
+                    .setMessage(String.format("Price has been created for %", price.getVideoType()))
                     .build();
         }
         return new Response.Builder<>()
@@ -98,7 +98,7 @@ public class PriceService {
                     .build();
         }
 
-        final VideoType videoType = video.getVideoType();
+        final String videoType = video.getVideoType();
 
         final Price price = priceRepository.findByVideoType(videoType).orElse(null);
         if (Objects.isNull(price)) {
@@ -111,20 +111,20 @@ public class PriceService {
 
         final Integer maximumAge = video.getMaximumAge();
 
-        if (price.getVideoType().equals(VideoType.New_Release))
+        if (price.getVideoType().equals(VideoType.New_Release.getType()))
             year = video.getYear().length() > 2 ? video.getYear().substring(video.getYear().length() - 2) : video.getYear();
 
         Double rate = price.getRate();
         final String videoTitle = video.getTitle();
 
 
-        if (price.getVideoType().equals(VideoType.Regular))
+        if (price.getVideoType().equals(VideoType.Regular.getType()))
             videoRentalFee = rate * days;
 
-        if (price.getVideoType().equals(VideoType.Children_Movie))
+        if (price.getVideoType().equals(VideoType.Children_Movie.getType()))
             videoRentalFee = rate * days + maximumAge / 2;
 
-        if (price.getVideoType().equals(VideoType.New_Release))
+        if (price.getVideoType().equals(VideoType.New_Release.getType()))
             videoRentalFee = rate * days - Integer.parseInt(year);
 
 

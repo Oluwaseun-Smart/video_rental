@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 public interface PriceRepository extends JpaRepository<Price, Long> {
-    Optional<Price> findByVideoType(VideoType videoType);
+    Optional<Price> findByVideoType(String videoType);
 
     Page<Price> findAll(Pageable pageable);
 }

@@ -26,8 +26,7 @@ public class Price implements Serializable {
     private Long id;
 
     @Column(name = "video_type")
-    @Enumerated(EnumType.STRING)
-    private VideoType videoType;
+    private String videoType;
 
     @Column(name = "rate")
     private Double rate;

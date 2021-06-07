@@ -30,12 +30,10 @@ public class Video implements Serializable {
     private String title;
 
     @Column(name = "video_type")
-    @Enumerated(EnumType.STRING)
-    private VideoType videoType;
+    private String videoType;
 
     @Column(name = "video_genre")
-    @Enumerated(EnumType.STRING)
-    private VideoGenre videoGenre;
+    private String videoGenre;
 
     @Column(name = "year")
     private String year;
